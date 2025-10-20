@@ -882,7 +882,56 @@
                 <div class="envelope"></div>
                 <div class="front"></div>
                 <div class="card">
-                    <div class="text"> Thư </br> Gửi's</br> Manh!</div>
+                    <div class="text"> Happ            helperPoints.push(lerp(helperPoints[0], helperPoints[1], t));
+            helperPoints.push(lerp(helperPoints[1], helperPoints[2], t));
+
+            // helper point 5 is where the first Bézier ends and where the second Bézier begins
+            helperPoints.push(lerp(helperPoints[3], helperPoints[4], t));
+
+            // points for the dynamic bézier
+            let firstBezier = [
+                points[0],
+                helperPoints[0],
+                helperPoints[3],
+                helperPoints[5]
+            ];
+            //console.log(firstBezier)
+            return firstBezier;
+        }
+
+        function lerp(A, B, t) {
+            let ry = [
+                (B[0] - A[0]) * t + A[0], //x
+                (B[1] - A[1]) * t + A[1] //y
+            ];
+            return ry;
+        }
+
+        function drawCBezier(points, path, index) {
+            let d;
+
+            if (index > 0) {
+                d = subpaths[index].previous.d;
+            } else {
+                d = `M${points[0][0]},${points[0][1]} C`;
+            }
+
+            // points.length == 4
+            for (let i = 1; i < 4; i++) {
+                d += ` ${points[i][0]},${points[i][1]} `;
+            }
+            //console.log(d)
+            partialPath.setAttributeNS(null, "d", d);
+        }
+    </script>
+
+    <div id="castle" style="display: none;">
+        <div class="letter">
+            <div class="valentines">
+                <div class="envelope"></div>
+                <div class="front"></div>
+                <div class="card">
+                    <div class="text"> happy  </br> women's  </br>day!</div>
                     <div class="heart"></div>
                 </div>
                 <div class="hearts">
@@ -1109,7 +1158,7 @@
         // .textLetter text h2
         let indexText = 0;
         let textLetter = document.querySelector('.textLetter h2');
-        const textLetterH2 = "Gửi Manh - ig:Miew.a_hnw!";
+        const textLetterH2 = " ig:chupachips666";
         let timoutTextLetter;
 
         function textCharLetter() {
@@ -1137,7 +1186,7 @@
         // chữ của thư bạn muốn gửi
         let indexTextContent = 0;
         let textLetterContent = document.querySelector('.contentLetter');
-        const textLetterP = "Chúc Manh ngày 20/10  vui vẻ và hạnh phúc. Chúc Cho Manh những năm tháng sau này có thể cười nhiều hơn, ít buồn điii, Hạnh Phúc nhân đôi.Chúc cho tất cả những điều đẹp nhất sẽ đến bên Manh . <3 Manh";
+        const textLetterP = "Chúc TRang ngày 20/10  vui vẻ và hạnh phúc. Chúc Cho Trang những năm tháng sau này có thể cười nhiều hơn, ít buồn điii, .Chúc cho tất cả những điều đẹp nhất sẽ đến bên Trang";
         let timoutTextLetterContent;
         function textCharLetterContent() {
             if (indexTextContent < textLetterP.length) {
